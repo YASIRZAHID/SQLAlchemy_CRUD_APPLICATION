@@ -1,0 +1,596 @@
+........................................................................................
+I FOLLOWED THIS TUTORIAL TO MAKE MY PROJECT : https://www.youtube.com/watch?v=oA8brF3w5XQ
+
+I HAD SOME PROBLEMS IN ABOVE TUTORIAL SO SOME COMMANDS WERE NOT WORKING SO I REPLACED THEM WITH CURRENTLY WORKING ONES......
+
+DETAILS BELOW................... 
+..........................................................................................
+
+OPEN FOLDER WITH CODE
+TYPE: python -m venv path\venv
+CTRL + SHIFT + P >> select python interpreter 
+TYPE:.\venv\Scripts\Activate.ps1
+TYPE: pip install virtual env
+TYPE: pip install Flask
+
+......................................................................................
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+@app.route('/hello')
+def HelloWorld():
+    return "Hello World"
+
+if __name__=='__main__':
+    app.debug = True
+    app.run(host='0.0.0.0' , port= 5000)
+.......................................................................................
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+@app.route('/hello')
+def HelloWorld():
+    return "Hello World"
+
+@app.route('/products')
+def Products():
+    return "LAAL A MAAL A"
+
+if __name__=='__main__':
+    app.debug = True
+    app.run(host='0.0.0.0' , port= 8000)
+........................................................................................
+MAKE TWO FOLDERS 
+STATIC
+DYNAMIC
+(IN SAME FOLDER AS IS VENV)
+........................................................................................
+(YOU CAN ACCESS CONTENT IN STATIC FOLDER IF YOU TYPE FULL ADRESS UPTO FILE NAME)
+created a text file in static folder named YASIR.txt
+entered this address to access on browser http://192.168.10.18:8000/static/YASIR.txt
+
+**if it was some other file format it will have been downloaded
+........................................................................................
+added my HTML file to the static folder and visited this link (it runs OK)
+http://192.168.10.18:8000/static/PERSONNELPROFILE.htm
+........................................................................................
+make html file in templates
+name it index.html
+in file type ! you will get rest of HTML format
+........................................................................................
+// this is what index.html should look like
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIRST DYNAMIC PAGE</title>
+</head>
+<body>
+    FIRST DYNAMIC BODY
+</body>
+</html>
+........................................................................................
+from flask import Flask, render_template
+app = Flask(__name__)
+
+@app.route('/')
+@app.route('/hello')
+def HelloWorld():
+    return render_template('index.html')
+    #return "Hello World"
+
+@app.route('/products')
+def Products():
+    return "LAAL A MAAL A"
+
+if __name__=='__main__':
+    app.debug = True
+    app.run(host='0.0.0.0' , port= 8000)
+.........................................................................................
+now we will be rendering html file at http://192.168.10.18:8000/   (just visit the link)
+.........................................................................................
+go to getbottstrap.com
+click get started
+copy starter template
+.................
+starter template
+.................
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
+..............................................................................................
+save now you will be seeing the bootstrap version of hello world!.............
+...............................................................................................
+from components choose navbar copy the code 
+...............................................................................................
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+..........................................................................................................................
+paste navbar code in body of index.html and save
+...........................................................................................................................
+add form in <div class="container"></div>
+add form
+use class container my-3 for margin in y axis
+............................................................................................................................
+TO MAKE A DATABASE
+in activated environment run command in powershell terminal
+pip install flask-sqlalchemy
+
+.....................
+if it does not work
+type: pip freeze
+copy all to requirements.txt
+type: deactivate
+type: pip install -r .\requirements.txt (make sure requirements.txt is in project folder)
+type:.\venv\Scripts\Activate.ps1
+............................................................................................................................
+CODE TILL NOW
+............................................................................................................................
+from ast import Return
+from datetime import datetime
+from email.policy import default
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MyProject.db'
+app.config['SQLALCHEMY_TRACK_MODIFCATIONS'] = False
+db = SQLAlchemy(app)
+
+class MyProjects():
+    Sno =     db.Column(db.Integer , primary_key = True)
+    project = db.Column(db.String(200) , nullable = False)
+    description =   db.Column(db.String(500) , nullable = False)
+    Dated =   db.Column(db.DateTime , default = datetime.utcnow)
+
+    def __repr__(self) -> str:
+        return f"{self.Sno} - {self.project}"
+
+
+@app.route('/')
+@app.route('/hello')
+def HelloWorld():
+    return render_template('index.html')
+    #return "Hello World"
+
+@app.route('/products')
+def Products():
+    return "LAAL A MAAL A"
+
+if __name__=='__main__':
+    app.debug = True
+    app.run(host='0.0.0.0' , port= 8000)
+...................................................................................................
+type: python
+type: from app import db
+type: db.create_all()
+(make sure database is correct)
+.............................................................................................
+install jinja 2 kit
+.............................................................................................
+make necessary changes in table use jinja for loop 
+...........................................................................................
+index code tll now
+...........................................................................................
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MY PROJECTS DATABASE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg "  style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">My projects</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  SKILLS
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">SUBJECTS</a></li>
+                  <li><a class="dropdown-item" href="#">IDEAS</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">SOFTWARE PRODUCTS</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">CV</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="PROJECTS BY OTHERS.." aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <div class="container my-3">
+        <h1> ADD A PROJECT </h1>
+        <form action="/" method="post">
+            <div class="mb-3">
+              <label for="project" class="form-label">Project Name</label>
+              <input type="text" class="form-control" name="project" id="project" >
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" name="description" id="description">
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+          </form>
+    </div>
+    <div class="container my-3">
+        <h1> My Projects </h1>
+  
+              {% if allmyprojects|length == 0 %}
+              <div class="alert alert-danger" role="alert">
+                no record
+              </div>  
+              {% else %}
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+              {% for myprojects in allmyprojects %}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{myprojects.project}}</td>
+                <td>{{myprojects.description}}</td>
+                <td>{{myprojects.Dated}}</td>
+                <td>
+                  <a href="/delete/{{myprojects.Sno}}" type="button" class="btn btn-outline-danger btn-sm mx-1 ">Delete</button>
+                  <a href="/update/{{myprojects.Sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1 ">Update</button>
+                </td>  
+              </tr>
+            </tbody>
+          </table>
+          {% endfor %}
+          {% endif %}
+            
+    </div>
+  </body>
+</html>
+.................................................................................................................................
+app.py code till now
+....................................................................................................................................
+from ast import Return
+from datetime import datetime
+from email.policy import default
+from flask import Flask, Request, redirect, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MyProject.db'
+app.config['SQLALCHEMY_TRACK_MODIFCATIONS'] = False
+db = SQLAlchemy(app)
+
+class MyProjects(db.Model):
+    Sno =     db.Column(db.Integer , primary_key = True)
+    project = db.Column(db.String(200) , nullable = False)
+    description =   db.Column(db.String(500) , nullable = False)
+    Dated =   db.Column(db.DateTime , default = datetime.utcnow)
+
+    def __repr__(self) -> str:
+        return f"{self.Sno} - {self.project}"
+
+
+@app.route('/' , methods=['GET' , 'POST'])
+@app.route('/hello')
+def HelloWorld():
+    if request.method == 'POST':
+        getproject=      request.form.get('project')
+        getdescription=  request.form.get('description')
+        getDated=        request.form.get('date')
+
+        myprojects = MyProjects(project = getproject , description = getdescription)
+        db.session.add(myprojects)
+        db.session.commit()
+
+    allmyprojects = MyProjects.query.all()
+    return render_template('index.html' , allmyprojects=allmyprojects)
+
+
+@app.route('/show')
+def Products():
+    allmyprojects = MyProjects.query.all()
+    print(allmyprojects)
+    return "I AM SHOW"
+
+@app.route('/delete/<int:Sno>')
+def delete(Sno):
+    allmyprojects = MyProjects.query.filter_by(Sno=Sno).first()
+    db.session.delete (allmyprojects)
+    db.session.commit()
+    return redirect("/")
+
+@app.route('/update')
+def update():
+    allmyprojects = MyProjects.query.all()
+    print(allmyprojects)
+    return "I AM SHOW"        
+
+if __name__=='__main__':
+    app.debug = True
+    app.run(host='0.0.0.0' , port= 8000)
+........................................................................................................................
+FINAL CODES
+.....................
+APP.PY
+.....................
+from ast import Return
+from datetime import datetime
+from email.policy import default
+from flask import Flask, Request, redirect, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MyProject.db'
+app.config['SQLALCHEMY_TRACK_MODIFCATIONS'] = False
+db = SQLAlchemy(app)
+
+class MyProjects(db.Model):
+    Sno =     db.Column(db.Integer , primary_key = True)
+    project = db.Column(db.String(200) , nullable = False)
+    description =   db.Column(db.String(500) , nullable = False)
+    Dated =   db.Column(db.DateTime , default = datetime.utcnow)
+
+    def __repr__(self) -> str:
+        return f"{self.Sno} - {self.project}"
+
+
+@app.route('/' , methods=['GET' , 'POST'])
+@app.route('/hello')
+def HelloWorld():
+    if request.method == 'POST':
+        getproject=      request.form.get('project')
+        getdescription=  request.form.get('description')
+        getDated=        request.form.get('date')
+
+        myprojects = MyProjects(project = getproject , description = getdescription)
+        db.session.add(myprojects)
+        db.session.commit()
+
+    allmyprojects = MyProjects.query.all()
+    return render_template('index.html' , allmyprojects=allmyprojects)
+
+
+@app.route('/show')
+def Products():
+    allmyprojects = MyProjects.query.all()
+    print(allmyprojects)
+    return "I AM SHOW"
+
+@app.route('/delete/<int:Sno>')
+def delete(Sno):
+    allmyprojects = MyProjects.query.filter_by(Sno=Sno).first()
+    db.session.delete (allmyprojects)
+    db.session.commit()
+    return redirect("/")
+
+@app.route('/update/<int:Sno>' , methods=['GET' , 'POST'])
+def update(Sno):
+    if request.method == 'POST':
+        getproject=      request.form.get('project')
+        getdescription=  request.form.get('description')
+
+        allmyprojects = MyProjects.query.filter_by(Sno=Sno).first()
+        allmyprojects.project = getproject
+        allmyprojects.description = getdescription
+        db.session.add(allmyprojects)
+        db.session.commit()
+        return redirect("/")
+    allmyprojects = MyProjects.query.filter_by(Sno=Sno).first()
+    return render_template('update.html' , allmyprojects=allmyprojects)
+    return "UPDATED SUCCESSFULLY"        
+
+if __name__=='__main__':
+    app.debug = True
+    app.run(host='0.0.0.0' , port= 8000)
+......................................................................................................
+BASE.HTML
+............
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}
+        
+    {% endblock title %} - PROJECTS DATABASE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg "  style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">My projects</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="PROJECTS BY OTHERS.." aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+{% block body %}
+    
+{% endblock body %}
+  </body>
+</html>
+.......................
+INDEX.HTML
+.......................
+{% extends 'base.html' %}
+{% block title %}
+        Home
+    {% endblock title %}
+{% block body %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <div class="container my-3">
+        <h1> ADD A PROJECT </h1>
+        <form action="/" method="post">
+            <div class="mb-3">
+              <label for="project" class="form-label">Project Name</label>
+              <input type="text" class="form-control" name="project" id="project" >
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" name="description" id="description">
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+          </form>
+    </div>
+    <div class="container my-3">
+        <h1> My Projects </h1>
+  
+              {% if allmyprojects|length == 0 %}
+              <div class="alert alert-danger" role="alert">
+                no record
+              </div>  
+              {% else %}
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+              {% for myprojects in allmyprojects %}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{myprojects.project}}</td>
+                <td>{{myprojects.description}}</td>
+                <td>{{myprojects.Dated}}</td>
+                <td>
+                  <a href="/delete/{{myprojects.Sno}}" type="button" class="btn btn-outline-danger btn-sm mx-1 ">Delete</button>
+                  <a href="/update/{{myprojects.Sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1 ">Update</button>
+                </td>  
+              </tr>
+            
+          {% endfor %}
+        </tbody>
+      </table>
+          {% endif %}
+            
+    </div>
+    
+{% endblock body %}
+...............................
+UPDATE.HTML
+.................
+{% extends 'base.html' %}
+{% block title %}
+        Home
+    {% endblock title %}
+{% block body %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <div class="container my-3">
+        <h1> Edit A PROJECT </h1>
+        <form action="/update/{{allmyprojects.Sno}}" method="post">
+            <div class="mb-3">
+              <label for="project" class="form-label">Project Name</label>
+              <input type="text" class="form-control" value="{{allmyprojects.project}}" name="project" id="project" >
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" value="{{allmyprojects.description}}" name="description" id="description">
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Update</button>
+          </form>
+    </div>
+   
+    
+{% endblock body %}
+......................................................................................................................................
+
+
